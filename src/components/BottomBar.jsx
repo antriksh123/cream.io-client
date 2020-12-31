@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import EndCall from '../svg/endCall.svg'
+import MdCallEnd from 'react-icons/md'
 
 const BottomBar = ({
   clickChat,
@@ -51,7 +51,9 @@ const BottomBar = ({
         </ScreenButton>
       </Center>
       <Right>
-        <StopButton onClick={goToBack}><img src={EndCall} alt="End Call"/></StopButton>
+        <StopButton onClick={goToBack}>
+          <MdCallEnd />
+        </StopButton>
       </Right>
     </Bar>
   );
