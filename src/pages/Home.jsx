@@ -7,7 +7,8 @@ import Modal from '../tailwind/Modal'
 import axios from 'axios'
 
 function Home() {
-  const [openModal, setOpenModal] = useState(false)
+  const [openCreateModal, setOpenCreateModal] = useState(false)
+  const [openJoinModal, setOpenJoinModal] = useState(false)
   const [callId, setCallId] = useState(null)
   const {userData, setUserData} = useContext(AuthContext)
 
@@ -19,12 +20,17 @@ function Home() {
   const createNewCall = async e => {
     const callRes = await axios.post("/api/create-call", {adminId: userData.user.id})
     setCallId(callRes.data.savedCall._id)
-    setOpenModal(prev => !prev)
+    setOpenCreateModal(prev => !prev)
+  }
+
+  const joinNewCall = async e => {
+    setOpenJoinModal(prev => !prev)
   }
 
   return (
     <div className="w-full h-screen container mx-auto p-6">
-      {openModal ? <Modal callId={callId} setOpenModal={setOpenModal} /> : null}
+      {openCreateModal ? <Modal callId={callId} setOpenModal={setOpenCreateModal} /> : null}
+      {openJoinModal ? <InputModal setOpenModal={setOpenJoinModal} /> : null}
       <div className="w-full flex items-center justify-between">
         <a
           className="flex items-center text-red-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl dark:text-red-200"
@@ -58,6 +64,11 @@ function Home() {
               onClick={e => createNewCall(e)}
               className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 dark:bg-red-400 mx-4">
               Start New Call
+            </button>
+            <button
+              onClick={e => joinNewCall(e)}
+              className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 dark:bg-red-400 mx-4">
+              Join New Call
             </button>
             <button
               onClick={logout}
