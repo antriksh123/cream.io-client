@@ -1,3 +1,3 @@
 import io from 'socket.io-client';
-const sockets = io('/api');
+const sockets = io('/');
 export default sockets;

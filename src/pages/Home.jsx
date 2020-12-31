@@ -4,6 +4,7 @@ import LandingPageImg from "./../images/landing_img.jpg";
 import Logo from "./../svg/logo.svg";
 import AuthContext from '../contexts/AuthContext';
 import Modal from '../tailwind/Modal'
+import InputModal from '../tailwind/InputModal'
 import axios from 'axios'
 
 function Home() {
@@ -18,7 +19,7 @@ function Home() {
   }
 
   const createNewCall = async e => {
-    const callRes = await axios.post("/api/create-call", {adminId: userData.user.id})
+    const callRes = await axios.post("/create-call", {adminId: userData.user.id})
     setCallId(callRes.data.savedCall._id)
     setOpenCreateModal(prev => !prev)
   }

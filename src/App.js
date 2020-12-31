@@ -21,13 +21,13 @@ function App() {
         token = ""
       }
       const tokenVerified = await axios.post(
-        "/api/isTokenValid", 
+        "/isTokenValid", 
         null,
         { headers: {"x-auth-token": token} }
       )
       if (tokenVerified.data) {
         const userRes = await axios.get(
-          "/api/users/user",
+          "/users/user",
           { headers: {"x-auth-token": token} }
         )
         setUserData({

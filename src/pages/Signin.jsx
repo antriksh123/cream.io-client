@@ -22,7 +22,7 @@ function Signin() {
 
     try {
       setError(null)
-      const loginRes = await axios.post("/api/login", {username, password})
+      const loginRes = await axios.post("/login", {username, password})
       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user

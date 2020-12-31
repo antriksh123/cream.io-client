@@ -24,7 +24,7 @@ function Signup() {
       setLoading(true)
       const newUser = {username, email, password, passwordConfirmation}
       const registerRes = await axios.post(
-        '/api/signup',
+        '/signup',
         newUser
       )
       history.push('/signin')
