@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MdCallEnd from 'react-icons/md'
+import { MdCallEnd } from 'react-icons/md'
 
 const BottomBar = ({
   clickChat,
