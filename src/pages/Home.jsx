@@ -17,7 +17,7 @@ function Home() {
   }
 
   const createNewCall = async e => {
-    const callRes = await axios.post("/create-call", {adminId: userData.user.id})
+    const callRes = await axios.post("/api/create-call", {adminId: userData.user.id})
     setCallId(callRes.data.savedCall._id)
     setOpenModal(prev => !prev)
   }
